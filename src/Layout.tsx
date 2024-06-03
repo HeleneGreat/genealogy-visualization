@@ -21,7 +21,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Stack direction="row" spacing={1} alignItems="center">
               <AutoStories />
               <Typography level="h3" color="neutral">
-                Florian Cassayre
+                Hélène Carriou
               </Typography>
             </Stack>
             <Typography color="neutral">Genealogy and family history</Typography>
@@ -31,7 +31,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
               <IconButton
                 variant="outlined"
                 component="a"
-                href="https://github.com/FlorianCassayre/genealogy-visualization"
+                href="https://github.com/HeleneGreat/genealogy-visualization"
                 target="_blank"
                 rel="noopener"
               >
