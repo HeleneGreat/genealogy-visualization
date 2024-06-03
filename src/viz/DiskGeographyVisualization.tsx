@@ -14,8 +14,15 @@ export const DiskGeographyVisualization: React.FC<DiskGeographyVisualizationProp
     if (place === null) {
       return null;
     }
-    const parts = place.slice(level);
-    const joinChar = ', ';
+    const formattedPlace = [
+      place[5] || null,  // Lieu-dit
+      place[0] || null,  // Ville
+      place[2] || null,  // Département
+      place[3] || null,  // Région
+      place[4] || null,  // Pays
+    ];
+    const parts = formattedPlace.slice(level);
+    const joinChar = ',';
     if (parts.every((v): v is string => v !== null)) {
       return parts.join(joinChar);
     } else if (strict) {
@@ -41,12 +48,14 @@ export const DiskGeographyVisualization: React.FC<DiskGeographyVisualizationProp
       <Slider
         step={1}
         min={0}
-        max={2}
+        max={5}
         valueLabelDisplay="off"
         marks={[
+          { value: 5, label: 'Lieu-dit' },
           { value: 0, label: 'Town' },
-          { value: 1, label: 'Department' },
-          { value: 2, label: 'Country' },
+          { value: 2, label: 'Department' },
+          { value: 3, label: 'Région' },
+          { value: 4, label: 'Country' },
         ]}
         track={false}
         onChange={(e) => setLevel(parseInt((e.target as any).value))}

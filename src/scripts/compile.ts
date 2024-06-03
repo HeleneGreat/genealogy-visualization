@@ -9,7 +9,7 @@ const INPUT_FILE = 'genealogy.ged';
 const OUTPUT_DIRECTORY = 'public/data';
 
 const TREE_DEPTH_LIMIT = 9;
-const TREE_DEPTH_SENSITIVE = 3;
+// const TREE_DEPTH_SENSITIVE = 3;
 
 const targetGenealogyData = (gedcom: SelectionGedcom): GenealogyData => ({
   count: gedcom.getIndividualRecord().array().length,
@@ -17,13 +17,20 @@ const targetGenealogyData = (gedcom: SelectionGedcom): GenealogyData => ({
 
 const targetGeographyDisk = (gedcom: SelectionGedcom): GeographyDiskData => {
   const root = gedcom.getIndividualRecord().arraySelect()[0];
-  const dataForIndividual = (node: SelectionIndividualRecord, depth: number): GeographyDiskData['tree']['data'] => {
+  const dataForIndividual = (node: SelectionIndividualRecord): GeographyDiskData['tree']['data'] => {
     const parts = node.getEventBirth().getPlace().valueAsParts()[0];
     const place =
       parts != null
-        ? _.list(3 - 1)
-            .reverse()
-            .map((i) => (i !== 2 || depth >= TREE_DEPTH_SENSITIVE ? parts[parts.length - 1 - i] || null : null))
+        // ? _.list(3 - 1)
+        //     .reverse()
+        //     .map((i) => (i !== 2 || depth >= TREE_DEPTH_SENSITIVE ? parts[parts.length - 1 - i] || null : null))
+        ? [
+          parts[5] || null,  // Lieu-dit
+          parts[0] || null,  // Ville
+          parts[2] || null,  // Département
+          parts[3] || null,  // Région
+          parts[4] ? parts[4].toUpperCase() : null,  // Pays
+        ]
         : null;
     return { place };
   };
