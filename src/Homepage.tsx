@@ -11,13 +11,13 @@ export const Homepage = () => {
       <Grid container justifyContent="center" spacing={2}>
         <Grid xs={12} sm={10} md={8} lg={7} xl={6}>
           <Typography level="h3" color="neutral" textAlign="center" sx={{ mt: 2, mb: 3 }}>
-            Location
+            Lieux de naissance
           </Typography>
           <DiskGeographyVisualization data={data.tree} />
         </Grid>
         <Grid xs={12} sm={10} md={8} lg={7} xl={6}>
           <Typography level="h3" color="neutral" textAlign="center" sx={{ mt: 2, mb: 3 }}>
-            Longevity
+            Longévité
           </Typography>
           <DiskLongevityVisualization data={dataLongevity.tree} />
         </Grid>
