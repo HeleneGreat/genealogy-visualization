@@ -28,8 +28,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Gramps
-        run: sudo apt-get install -y gramps
       - name: Setup node
         uses: actions/setup-node@v3
         with:
