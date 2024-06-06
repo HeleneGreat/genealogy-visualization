@@ -41,6 +41,7 @@ jobs:
         with:
           repository: HeleneGreat/genealogy-gedcom
           path: genealogy
+          token: ${{ secrets.GENEALOGY_DEPLOY_KEY }}
       - name: Convert Gedcom
         run: npm run update:gedcom
       - name: Compile data
