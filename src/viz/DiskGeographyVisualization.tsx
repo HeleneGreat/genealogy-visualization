@@ -15,11 +15,11 @@ export const DiskGeographyVisualization: React.FC<DiskGeographyVisualizationProp
       return null;
     }
     const formattedPlace = [
-      place[0] || null,  // Lieu-dit
-      place[1] || null,  // Ville
-      place[2] || null,  // Département
-      place[3] || null,  // Région
-      place[4] || null,  // Pays
+      place[0] ?? null,  // Lieu-dit
+      place[1] ?? null,  // Ville
+      place[2] ?? null,  // Département
+      place[3] ?? null,  // Région
+      place[4] ?? null,  // Pays
     ];
     const parts = formattedPlace.slice(level);
     const joinChar = ',';
