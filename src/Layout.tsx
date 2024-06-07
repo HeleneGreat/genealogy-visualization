@@ -24,7 +24,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
                 Hélène Carriou
               </Typography>
             </Stack>
-            <Typography color="neutral">Projet d&apos;illustration de ma généalogie, à partir d&apos;un projet de <a href="https://genealogy.florian.cassayre.me" target="_blank" rel="noreferrer">Florian Cassayre</a></Typography>
+            <Typography color="neutral">
+              Projet d&apos;illustration de ma généalogie, à partir d&apos;un projet de{' '}
+              <a href="https://genealogy.florian.cassayre.me" target="_blank" rel="noreferrer">
+                Florian Cassayre
+              </a>
+            </Typography>
           </Stack>
           <Box>
             <Tooltip title="View on GitHub">
