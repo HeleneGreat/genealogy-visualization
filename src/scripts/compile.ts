@@ -5,7 +5,7 @@ import { Data, GenealogyData, GeographyDiskData, LongevityDiskData } from './typ
 import * as _ from 'radash';
 import { buildIndividualTree } from './utils.ts';
 
-const INPUT_FILE = 'genealogy.ged';
+const INPUT_FILE = 'genealogy/genealogy.ged';
 const OUTPUT_DIRECTORY = 'public/data';
 
 const TREE_DEPTH_LIMIT = 9;
