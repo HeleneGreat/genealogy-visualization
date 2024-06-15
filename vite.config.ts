@@ -11,6 +11,7 @@ export default defineConfig({
     },
   },
   define: {
-    BUILD_TIMESTAMP: new Date().getTime(),
+    // BUILD_TIMESTAMP: new Date().getTime(),
+    'import.meta.env.BUILD_TIMESTAMP': JSON.stringify(new Date().getTime()),
   }
 })
