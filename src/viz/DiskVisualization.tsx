@@ -247,7 +247,8 @@ const DiskTreeLayout: React.FC<DiskTreeLayoutProps> = ({
       ]
         .flat()
         .join(' ')}
-      stroke={color}
+      stroke={'#fff'}
+      // stroke={color}
       strokeWidth={strokeWidth}
       fill={color}
       onMouseEnter={() => onEnter()}

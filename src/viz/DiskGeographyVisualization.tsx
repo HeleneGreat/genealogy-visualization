@@ -31,6 +31,8 @@ export const DiskGeographyVisualization: React.FC<DiskGeographyVisualizationProp
       return parts.filter((v): v is string => v !== null).join(joinChar);
     }
   };
+  const GenerationNumber = (sosa: number) => Math.floor(Math.log2(sosa)) + 1;
+  const genderSymbol = (sosa: number): string => (sosa % 2 === 0 ? '♂' : '♀');
   return (
     <Box>
       <DiskVisualization
@@ -38,7 +40,7 @@ export const DiskGeographyVisualization: React.FC<DiskGeographyVisualizationProp
         color={interpolateSinebow}
         tooltip={(d) => (
           <Stack alignItems="center">
-            <Box>Sosa {d.sosa}</Box>
+            <Box>Génération {GenerationNumber(d.sosa)} | Sosa {d.sosa} {genderSymbol(d.sosa)}</Box>
             <Box>{formatPlace(d.place, false)}</Box>
           </Stack>
         )}
