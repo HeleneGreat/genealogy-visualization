@@ -40,7 +40,9 @@ export const DiskGeographyVisualization: React.FC<DiskGeographyVisualizationProp
         color={interpolateSinebow}
         tooltip={(d) => (
           <Stack alignItems="center">
-            <Box>Génération {GenerationNumber(d.sosa)} | Sosa {d.sosa} {genderSymbol(d.sosa)}</Box>
+            <Box>
+              Génération {GenerationNumber(d.sosa)} | Sosa {d.sosa} {genderSymbol(d.sosa)}
+            </Box>
             <Box>{formatPlace(d.place, false)}</Box>
           </Stack>
         )}

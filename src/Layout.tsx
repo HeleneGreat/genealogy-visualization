@@ -11,7 +11,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     const timestamp = import.meta.env.BUILD_TIMESTAMP as number | undefined;
     const date = new Date(timestamp ?? new Date().getTime());
     return date.toLocaleDateString('fr-fr', { year: 'numeric', month: 'short', day: 'numeric' });
-    };
+  };
   return (
     <>
       <CssBaseline />
@@ -48,7 +48,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         {children}
         <Divider sx={{ my: 2 }} />
         <footer>
-          <Typography textAlign="center">Ce site est automatiquement généré à partir d&apos;un fichier Gedcom</Typography>
+          <Typography textAlign="center">
+            Ce site est automatiquement généré à partir d&apos;un fichier Gedcom
+          </Typography>
           <Typography textAlign="center">Dernière mise à jour : {renderDateBuilt()}</Typography>
         </footer>
       </Container>
