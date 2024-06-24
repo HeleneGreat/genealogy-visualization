@@ -1,0 +1,52 @@
+:root {
+    --primary:#324933;
+    --secondary: #fd6035;
+    --background: #f5efe1;
+}
+body{
+    background-color: var(--background)!important;
+}
+h1, h2, h3, h4, li, p, a, span, svg{
+    color: var(--primary)!important;
+}
+/* GitHub icon */
+.css-1aqndh-JoyStack-root .css-1m7ptnf-JoyIconButton-root {
+    border-color: var(--primary)!important;
+    transition: .2s all ease-in-out!important;
+}
+.css-1aqndh-JoyStack-root .css-1m7ptnf-JoyIconButton-root:hover{
+    background-color: var(--primary)!important;
+}
+.css-1aqndh-JoyStack-root .css-1m7ptnf-JoyIconButton-root:hover svg{
+    color: var(--background)!important;
+}
+
+/* Localization slider selection */
+.css-hayzob-JoySlider-thumb::before{
+    border-color: var(--primary)!important;
+}
+.css-25lf7d-JoySlider-rail{
+    background-color: var(--primary)!important;
+}
+.css-hayzob-JoySlider-thumb.Mui-focusVisible,
+.css-hayzob-JoySlider-thumb:focus-visible{
+    outline-color: rgba(50, 73, 51, 0.32)!important;
+}
+
+/* Longevity gender selection */
+.MuiButtonGroup-root .MuiIconButton-root{
+    background-color: var(--primary)!important;
+    border-color: var(--background)!important;
+}
+.MuiButtonGroup-root .MuiIconButton-root .css-1r2bn3-JoySvgIcon-root{
+    color: var(--background)!important;
+}
+.MuiButtonGroup-root .MuiIconButton-root.css-4o9y4-JoyIconButton-root{
+    background-color: var(--secondary)!important;
+}
+
+/* Aide pour lire l'arbre */
+#legend{
+    margin-top: 50px;
+    margin-bottom: 30px;
+}

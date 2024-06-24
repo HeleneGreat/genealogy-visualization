@@ -46,6 +46,11 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
           </Box>
         </Stack>
         {children}
+        <div id="legend">
+          Ces roues sont une illustration de mon arbre généalogique. Chaque anneau représente une génération: plus on
+          s&apos;éloigne du centre de la roue, plus il s&apos;agit d&apos;une génération ancienne. En survolant un
+          quartier avec la souris, vous obtiendrez plus d&apos;information sur cet ancêtre.
+        </div>
         <Divider sx={{ my: 2 }} />
         <footer>
           <Typography textAlign="center">
