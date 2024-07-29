@@ -21,7 +21,17 @@ const targetGenealogyData = (gedcom: SelectionGedcom): GenealogyData => ({
 const targetGeographyDisk = (gedcom: SelectionGedcom): GeographyDiskData => {
   const root = gedcom.getIndividualRecord().arraySelect()[0];
   const dataForIndividual = (node: SelectionIndividualRecord): GeographyDiskData['tree']['data'] => {
-    const parts = node.getEventBirth().getPlace().valueAsParts()[0];
+    const dateForEvent = (event: SelectionEvent): Date | null => {
+      const dateValue = event.getDate().valueAsDate()[0];
+      return dateValue != null && dateValue.hasDate && dateValue.isDatePunctual ? toJsDate(dateValue.date) : null;
+    };
+    const birthYear = dateForEvent(node.getEventBirth());
+    let parts: string[] | null;
+    if (birthYear === null || birthYear.getFullYear() < 1793) {
+      parts = node.getEventChristening().getPlace().valueAsParts()[0];
+    } else {
+      parts = node.getEventBirth().getPlace().valueAsParts()[0];
+    }
     const place =
       parts != null
         ? // ? _.list(3 - 1)
@@ -49,8 +59,14 @@ const targetLongevityDisk = (gedcom: SelectionGedcom): LongevityDiskData => {
       const dateValue = event.getDate().valueAsDate()[0];
       return dateValue != null && dateValue.hasDate && dateValue.isDatePunctual ? toJsDate(dateValue.date) : null;
     };
-    const birth = dateForEvent(node.getEventBirth()),
-      death = dateForEvent(node.getEventDeath());
+    let birth = dateForEvent(node.getEventBirth());
+    if (birth === null || birth.getFullYear() < 1793) {
+      birth = dateForEvent(node.getEventChristening());
+    }
+    let death = dateForEvent(node.getEventDeath());
+    if (death === null || death.getFullYear() < 1793) {
+      death = dateForEvent(node.getEventBurial());
+    }
     // Extract birth and death years
     const birthYear = birth !== null ? birth.getFullYear() : null;
     const deathYear = death !== null ? death.getFullYear() : null;
