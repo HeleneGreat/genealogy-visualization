@@ -11,6 +11,8 @@ interface DiskLongevityVisualizationProps {
 
 export const DiskLongevityVisualization: React.FC<DiskLongevityVisualizationProps> = ({ data }) => {
   const [gender, setGender] = useState<boolean | null>(null);
+  const GenerationNumber = (sosa: number) => Math.floor(Math.log2(sosa)) + 1;
+  const genderSymbol = (sosa: number): string => (sosa % 2 === 0 ? '♂' : '♀');
   return (
     <Box>
       <DiskVisualization
@@ -18,8 +20,11 @@ export const DiskLongevityVisualization: React.FC<DiskLongevityVisualizationProp
         color={interpolateReds}
         tooltip={(d) => (
           <Stack alignItems="center">
-            <Box>Sosa {d.sosa}</Box>
-            <Box>{d.longevity !== null ? `${d.longevity} years` : d.sosa >= 1 << 3 ? 'Unknown' : 'Still alive'}</Box>
+            <Box>
+              Génération {GenerationNumber(d.sosa)} | Sosa {d.sosa} {genderSymbol(d.sosa)}
+            </Box>
+            <Box>{d.sosa > 7 ? `${d.birthYear ?? '?'}-${d.deathYear ?? '?'}` : ''}</Box>
+            <Box>{d.longevity !== null ? `${d.longevity} ans` : d.sosa >= 1 << 3 ? 'Inconnu' : 'En vie'}</Box>
           </Stack>
         )}
         type={DiskVisualizationType.SCALE}

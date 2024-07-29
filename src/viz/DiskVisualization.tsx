@@ -247,7 +247,7 @@ const DiskTreeLayout: React.FC<DiskTreeLayoutProps> = ({
       ]
         .flat()
         .join(' ')}
-      stroke={'#aba9a9'}
+      stroke={'fff'}
       // stroke={color}
       strokeWidth={strokeWidth}
       fill={color}

@@ -19,5 +19,9 @@ export interface GeographyDiskData {
 }
 
 export interface LongevityDiskData {
-  tree: IndividualTree<{ longevity: number | null }>;
+  tree: IndividualTree<{
+    longevity: number | null;
+    birthYear: number | null;
+    deathYear: number | null;
+  }>;
 }

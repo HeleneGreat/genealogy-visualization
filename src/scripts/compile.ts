@@ -5,7 +5,10 @@ import { Data, GenealogyData, GeographyDiskData, LongevityDiskData } from './typ
 import * as _ from 'radash';
 import { buildIndividualTree } from './utils.ts';
 
-const INPUT_FILE = 'genealogy/genealogy.ged';
+// Production
+// const INPUT_FILE = 'genealogy/genealogy.ged';
+// Local
+const INPUT_FILE = 'genealogy.ged';
 const OUTPUT_DIRECTORY = 'public/data';
 
 const TREE_DEPTH_LIMIT = 9;
@@ -48,9 +51,17 @@ const targetLongevityDisk = (gedcom: SelectionGedcom): LongevityDiskData => {
     };
     const birth = dateForEvent(node.getEventBirth()),
       death = dateForEvent(node.getEventDeath());
+    // Extract birth and death years
+    const birthYear = birth !== null ? birth.getFullYear() : null;
+    const deathYear = death !== null ? death.getFullYear() : null;
     // Not the best rounding, but good enough
     const longevity = birth !== null && death !== null ? death.getFullYear() - birth.getFullYear() : null;
-    return { longevity };
+    // Exclude data for contemporary individual
+    if (birthYear !== null && Number.isInteger(birthYear) && (birthYear as number) > 1920) {
+      return { longevity, birthYear: null, deathYear: null };
+    } else {
+      return { longevity, birthYear, deathYear };
+    }
   };
   return {
     tree: buildIndividualTree(root, dataForIndividual, TREE_DEPTH_LIMIT),
